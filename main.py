@@ -83,16 +83,29 @@ def follow_line(robot,sensor,values):
 #x = matrix(sens,scanned_v)
 
 def fix_pos(neck,sensor,threshold):
+
+    #neck_a = neck.angle()
     if sensor.reflection() <= threshold:
         return -neck.angle()
-    max_rotate = neck.run_until_stalled(-200, duty_limit=40)/2
-    lowest_ref, low_ref_angle = 100, 0
-    
-    for i in range(max_rotate,abs(max_rotate)):
-        ref_v = sensor.reflection()
-        neck.run_target(200,i)
-        if ref_v <= threshold:
-            return -neck.angle()
+    #max_rotate = neck.run_until_stalled(-200, duty_limit=40)/2
+    max_rotate = 70
+    if neck.angle() >= 0: 
+        print("wieksze od 0")     
+        for i in range(max_rotate,-max_rotate,-4):
+            ref_v = sensor.reflection()
+            neck.run_target(200,i)
+            if ref_v <= threshold:
+                return -neck.angle()
+        return -90
+    if neck.angle() < 0:
+        print("mniejsze od 0")
+        for i in range(-abs(max_rotate),max_rotate,4):
+            ref_v = sensor.reflection()
+            neck.run_target(200,i)
+            if ref_v <= threshold:
+                return -neck.angle() 
+        return 90 
+    return 0
         
 
 def follow(robot,neck,sensor,values):
@@ -100,23 +113,33 @@ def follow(robot,neck,sensor,values):
     white = values[1]
     threshold = values[2]
     prev_distance = 0
-
+    prev_angle = 0
     log = []
 
     prop_gain = 0.75
 
-    while True and len(log) <= 35:
+    while True:
         angle = fix_pos(neck,sensor,threshold)
-        #error = ref_v - threshold 
-        #turn_rate = prop_gain * error + angle
-
-        robot.turn(angle)
+        if abs(angle) <= 50:
+            angle = angle * 0.5
+        if angle == 90:
+            robot.turn(-90)
+            angle = -angle
+        else:
+            if robot.done():
+                robot.turn(angle)
+                robot.straight(30)
+                
         real_dist = robot.distance() - prev_distance
         print(f"Real dist: {real_dist} Turn angle: {angle}")
         log.append([real_dist,angle])
+        if abs(prev_angle) == 90 and abs(angle) == 90:
+            break
+
+        prev_angle = angle
         prev_distance = robot.distance()
-        if robot.done():
-            robot.straight(30)
+        
+            
     return log
 
 tab = follow(robot,neck_motor,sens,scanned_v)
