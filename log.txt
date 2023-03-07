@@ -1,0 +1,41 @@
+Searching for any hub with Pybricks service...
+Scan completed.
+Values: 17,100,58.5
+Real dist: 26 Turn angle: 0
+Real dist: 24 Turn angle: -60.8
+Real dist: 26 Turn angle: 0
+Real dist: 25 Turn angle: 0
+Real dist: 24 Turn angle: 0
+Real dist: 25 Turn angle: 0
+Real dist: 26 Turn angle: 0
+Real dist: 24 Turn angle: 0
+Real dist: 25 Turn angle: 0
+Real dist: 25 Turn angle: 0
+Real dist: 25 Turn angle: -40.8
+Real dist: 26 Turn angle: 0
+Real dist: 24 Turn angle: -21.15
+Real dist: 25 Turn angle: -21.6
+Real dist: 26 Turn angle: -20.7
+Real dist: 24 Turn angle: 0
+Real dist: 26 Turn angle: 0
+Real dist: 24 Turn angle: -43.2
+Real dist: 26 Turn angle: 0
+Real dist: 24 Turn angle: 0
+Real dist: 25 Turn angle: -45.6
+Real dist: 25 Turn angle: 0
+Real dist: 25 Turn angle: 0
+Real dist: 26 Turn angle: 0
+Real dist: 24 Turn angle: 0
+Real dist: 26 Turn angle: 0
+Real dist: 25 Turn angle: -48.0
+Real dist: 25 Turn angle: 0
+Real dist: 25 Turn angle: 0
+Real dist: 25 Turn angle: 0
+Real dist: 24 Turn angle: 0
+Real dist: 26 Turn angle: 0
+Real dist: 24 Turn angle: -41.6
+Real dist: 26 Turn angle: 0
+Real dist: 24 Turn angle: -21.6
+Real dist: 25 Turn angle: -21.15
+Real dist: 26 Turn angle: -21.6
+[[26, 0], [24, -60.8], [26, 0], [25, 0], [24, 0], [25, 0], [26, 0], [24, 0], [25, 0], [25, 0], [25, -40.8], [26, 0], [24, -21.15], [25, -21.6], [26, -20.7], [24, 0], [26, 0], [24, -43.2], [26, 0], [24, 0], [25, -45.6], [25, 0], [25, 0], [26, 0], [24, 0], [26, 0], [25, -48.0], [25, 0], [25, 0], [25, 0], [24, 0], [26, 0], [24, -41.6], [26, 0], [24, -21.6], [25, -21.15], [26, -21.6]]

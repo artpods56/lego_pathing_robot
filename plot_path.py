@@ -1,13 +1,25 @@
 import math
 import matplotlib.pyplot as plt
 import numpy as np
+import ast
 
-log = [[30, -2.0], [30, -2.0], [29, 7.0], [31, 13.5], [29, 13.5], [31, 3.0], [29, 10.0], [30, 8.5], [30, 8.5], [30, 10.5], [31, 10.5], [30, 19.5], [29, 19.5], [31, 13.0], [29, 13.5], [31, 13.5], [29, 20.0], [30, 9.0], [30, 8.5], [30, 1.0], [30, 1.0], [30, 1.0], [1, -90], [29, 5.5], [31, -7.0], [30, -7.5], [30, 15.5], [29, 15.5], [30, 15.5], [29, 21.0], [32, 21.0], [29, 22.5], [30, 15.5], [31, 15.5], [29, 15.5], [31, 9.5], [30, 9.0], [29, 3.0], [31, 3.0], [0, -90], [29, -90]]
+log = []
+with open("log.txt","r") as file:
+        for line in file:
+            if line[0] != "[":
+                continue
+            else:
+                line = ast.literal_eval(line)
+                for values in line:
+
+                    log.append([float(values[0]),float(values[1])])
+        
+
 class robot:
     def __init__(self):
         self.pos_x = [0]
         self.pos_y = [0]
-        self.angle = 290
+        self.angle = 160
         
         
     def move(self,distance,ang):
@@ -26,7 +38,12 @@ class robot:
         
 robo = robot()
 for values in log:
-    robo.move(abs(values[0])/25,values[1])
+    angle = values[1]
+    if abs(angle) <= 50:
+        angle = angle * 0.9
+    elif abs(angle) > 50:
+        angle = angle * 1
+    robo.move(abs(values[0])/25,angle)
 
 
 x_cords = robo.pos_x
@@ -51,4 +68,5 @@ for x,y in zip(x_cords,y_cords):
     
     
 plt.imshow(grid,cmap='gray', vmin=0, vmax=255)
+plt.show()
 print(grid)
